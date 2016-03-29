@@ -1,0 +1,20 @@
+Model adherent
+	nom:string;prenom:string;ville:string;cp:string;adresse:string;date_naissance:date;courriel:string;telephone:string;age:int;type_adhesion:string;tournois:Tournoi;
+
+	classement ()
+	
+	date et montant du ou des versements de la cotisation
+
+Model tournoi
+	nom
+	type
+	lieu
+	participants
+
+
+[Annee]1..1--1..*[Cotisation|type:string;tarif:float;]0..*--1..*[Adherent|nom:string;prenom:string;ville:string;cp:string;adresse:string;date_naissance:date;courriel:string;telephone:string;age:int;type_adhesion:string;]0..*--1..*[Tournoi|nom:string;type:string;ville:string;cp:string;adresse:string;date:date;participant:adherent;]
+
+
+[Cotisation|type;tarif;annee]
+[Cotisation]0..*--1..*[Adherent|nom;prenom;ville;cp;adresse;date_naissance;courriel;telephone;age;type_adhesion;]
+[Adherent]0..*--1..*[Tournoi|nom;type;ville;cp;adresse;date;]

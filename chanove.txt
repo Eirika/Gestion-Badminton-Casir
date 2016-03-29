@@ -1,0 +1,39 @@
+L' utilisateur de l'application, veut pouvoir dans son appli gérer son club de badmington.
+On ne s'intéresse qu'aux adhérents. Il faut : leur nom, prénom, adresse, date de naissance,
+courriel, téléphone, âge, classement (), type d'adhésion, date et montant du ou des versements
+de la cotisation.
+Il faut également stocker la participation des adhérents à divers tournois ou compétitions.
+
+En mode consultation, il faut pouvoir avoir l'affichage par ordre alphabétique des adhérents,
+et affichage de ceux qui n'ont pas réglé leur cotisation de la saison.
+Il faut également savoir quels sont les adhérents ayant participé à un tournoi.
+
+
+Adherent
+	nom
+	prénom
+	adresse
+	date de naissance
+	courriel
+	téléphone
+	âge
+	classement (NC/C4-C1/B4-B1/A4-A1-Elite)
+
+Cotisation
+	saison (annee)
+	type (amical /pro)
+	cout
+
+Paiements
+	date
+	montant
+
+Tournoi
+	nom
+	lieu
+	type (amical / pro)
+
+
+[Adherent|nom;prénom;adresse;date de naissance;courriel;téléphone;âge;classement]1..1--1..*[Paiements|date;montant]
+[Paiements]0..*--1..1[Cotisation|saison;type;cout]
+[Adherent]0..*--0..*[Tournoi|nom;lieu;type]
