@@ -18,10 +18,10 @@ How to use
 ```
 >>> import.py
 ```
->> Will create an populate the database with all the data in the "donnees" folder
+> Will create an populate the database with all the data in the "donnees" folder
 
 #### Use the application
 ```
 >>> start.py
 ```
->> Will start the application and open the first menu
+> Will start the application and open the first menu
