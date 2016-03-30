@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 
 from sqlalchemy import create_engine, Table, Column, Float, Integer, String, Date, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
@@ -27,7 +27,6 @@ class Adherent(Base):
     date_naissance = Column(String)
     courriel = Column(String)
     tel = Column(Integer)
-    age = Column(Integer)
     classement = Column(String, nullable=False)
 
     tournois = relationship(
@@ -39,7 +38,7 @@ class Adherent(Base):
         "Paiement",
         back_populates="adherent")
 
-    def __init__(self, nom, prenom, ville=None, cp=None, adresse=None, date_naissance=None, courriel=None, tel=None, age=None, classement='NC'):
+    def __init__(self, nom, prenom, ville=None, cp=None, adresse=None, date_naissance=None, courriel=None, tel=None, classement='NC'):
         self.nom = nom
         self.prenom = prenom
         self.ville = ville
@@ -48,8 +47,13 @@ class Adherent(Base):
         self.date_naissance = date_naissance
         self.courriel = courriel
         self.tel = tel
-        self.age = age
         self.classement = classement
+
+    @staticmethod
+    def get_age(adh):
+        today = date.today()
+        date_naissance = datetime.strptime(adh.date_naissance, '%Y-%m-%d')
+        return today.year - date_naissance.year - ((today.month, today.day) < (date_naissance.month, date_naissance.day))
 
 
 class Tournoi(Base):

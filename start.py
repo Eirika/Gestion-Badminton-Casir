@@ -94,7 +94,7 @@ def menu_cotisation():
             choiceTournoi = int(input("Entrez votre choix : "))
             if choiceTournoi == 1:
                 hud.hud_print_cotisation(control)
-            elif choiceTournoi == 2 or 3:
+            elif choiceTournoi == 2 or choiceTournoi == 3:
                 hud.hud_print_cotisation_param(control, choiceTournoi)
             else:
                 stopCotisation = True

@@ -1,6 +1,6 @@
 import os
 clear = lambda: os.system('cls')
-from datetime import datetime
+from models.models import Adherent
 
 
 def hud_add_adherent(control):
@@ -17,7 +17,6 @@ def hud_add_adherent(control):
     date_naissance = input("Date de naissance (AAAA-MM-JJ) [facultatif] : ") or None
     courriel = input("Email [facultatif] : ") or None
     tel = input("Téléphone (sans indicatif) [facultatif] : ") or None
-    age = input("Age [facultatif] : ") or None
     classement = input("Classement [NC par défaut] : ") or 'NC'
 
     control.add_adherent(nom=nom,
@@ -28,7 +27,6 @@ def hud_add_adherent(control):
                         date_naissance=date_naissance,
                         courriel=courriel,
                         tel=tel,
-                        age=age,
                         classement=classement)
 
 
@@ -45,7 +43,7 @@ def hud_print_details_adherents(control):
     adh = control.get_one_adherents(adh_id=adherent_id)
     print("N°{}) {} {}".format(adh.adh_id, adh.nom, adh.prenom))
     print("{} {} {}".format(adh.adresse, adh.cp, adh.ville))
-    print("{} {} | {} {} ans".format(adh.courriel, adh.tel, adh.date_naissance, adh.age))
+    print("{} {} | {} {} ans".format(adh.courriel, adh.tel, adh.date_naissance, Adherent.get_age(adh)))
     print("Classé {}".format(adh.classement))
 
 

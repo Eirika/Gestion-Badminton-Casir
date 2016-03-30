@@ -88,8 +88,8 @@ def get_all_cotisation():
     return session.query(Cotisation).all()
 
 
-def get_cotisation_annee(annee):
-    return session.query(Cotisation).filter(annee=annee).first()
+def get_one_cotisation(**kwargs):
+    return session.query(Cotisation).filter_by(**kwargs).first()
 
 
 def get_cotisation_by_param(**kwargs):
