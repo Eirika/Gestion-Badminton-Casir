@@ -18,7 +18,7 @@ def menu_adh():
             print('  6) Afficher les paiements d\'un adhérent')
             print('  7) Ajouter un adhérent à un tournoi')
             print('  8) Retour au menu principal')
-            choiceAdh = int(input("Entrez votre choix : "))
+            choiceAdh = int(input("Entrez votre choix : ")) or 8
             if choiceAdh == 1:
                 hud.hud_print_adherents(control)
             elif choiceAdh == 2:
@@ -56,7 +56,7 @@ def menu_tournoi():
             print('  4) Supprimer un tournoi')
             print('  5) Ajouter un adhérent à un tournoi')
             print('  6) Retour au menu principal ')
-            choiceTournoi = int(input("Entrez votre choix : "))
+            choiceTournoi = int(input("Entrez votre choix : ")) or 6
             if choiceTournoi == 1:
                 hud.hud_print_tournois(control)
             elif choiceTournoi == 2:
@@ -91,7 +91,7 @@ def menu_cotisation():
             print('  2) Afficher les cotisations d\'une année')
             print('  3) Afficher les cotisations d\'un type')
             print('  4) Retour au menu principal ')
-            choiceTournoi = int(input("Entrez votre choix : "))
+            choiceTournoi = int(input("Entrez votre choix : ")) or 4
             if choiceTournoi == 1:
                 hud.hud_print_cotisation(control)
             elif choiceTournoi == 2 or choiceTournoi == 3:
@@ -114,6 +114,7 @@ if __name__ == "__main__":
         print('  1) Adhérents')
         print('  2) Tournois')
         print('  3) Cotisations')
+        print('  4) Quitter')
         print('---------------------')
         try:
             menuChoice = int(input("Entrez votre choix : ")) or 4
